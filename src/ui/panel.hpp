@@ -11,10 +11,10 @@ class Command;
 
 class Panel : public QWidget {
     Q_OBJECT
-    size_t n_visible = {}, cur = {};
+    size_t n_enabled = {}, cur = {};
 public:
     explicit Panel(QWidget *p = nullptr);
-    void add_command(std::string_view s);
+    void add_command(std::string_view s, int row, int col);
 signals:
     void command_selected(size_t) const;
 public slots:
