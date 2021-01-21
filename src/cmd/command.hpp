@@ -3,6 +3,7 @@
 
 #include <concepts>
 #include <string>
+#include <string_view>
 #include <type_traits>
 
 namespace impero {
@@ -21,7 +22,7 @@ template<CommandExecutor auto F>
 class ExecCommand : public Command {
     std::string m_command;
 public:
-    ExecCommand(std::string command) : m_command(std::move(command)) {}
+    explicit ExecCommand(std::string command) : m_command(std::move(command)) {}
     std::string_view command() const { return this->m_command; }
     Result execute() const override { return F(this->m_command); }
 };
